@@ -1,5 +1,7 @@
 package Model;
 
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 
 public class Order {

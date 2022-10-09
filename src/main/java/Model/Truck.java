@@ -6,5 +6,4 @@ public class Truck {
     private int Number;
     private int totalDistance;
     private SimpleDateFormat lastCheck;
-
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+
+    <Label fx:id="welcomeText" />
+    <Label alignment="TOP_LEFT" layoutX="24.0" layoutY="98.0" prefHeight="17.0" prefWidth="41.0" text="E-mail:" />
+    <TextField fx:id="emailField" layoutX="24.0" layoutY="128.0" />
+    <Label layoutX="24.0" layoutY="164.0" prefHeight="17.0" prefWidth="67.0" text="Password:" />
+    <PasswordField fx:id="passField" layoutX="25.0" layoutY="192.0" text="df" />
+    <Button layoutX="77.0" layoutY="240.0" onAction="#validate" prefWidth="46.0" text="Login" />
+</AnchorPane>

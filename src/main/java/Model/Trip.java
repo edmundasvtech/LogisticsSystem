@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Trip {
-    Driver assignedDriver;
-    Truck assignedTruck;
     ArrayList<Stop> stops;
     ArrayList<Order> orders;
     String startLocation;
@@ -17,7 +15,23 @@ public class Trip {
     LocalDateTime finished;
     SimpleDateFormat totalTime;
     int Distance;
-    boolean isCompleted;
+    enum Status{};
+
+    public Trip(Driver assignedDriver, Truck assignedTruck, ArrayList<Stop> stops, ArrayList<Order> orders, String startLocation, String destination, LocalDateTime started, LocalDateTime finished, SimpleDateFormat totalTime, int distance, boolean isCompleted) {
+
+        this.stops = stops;
+        this.orders = orders;
+        this.startLocation = startLocation;
+        this.destination = destination;
+        this.started = started;
+        this.finished = finished;
+        this.totalTime = totalTime;
+        Distance = distance;
+    }
+
+
+
+
 }
 
 class Stop{
@@ -26,4 +40,13 @@ class Stop{
     LocalDateTime started;
     LocalDateTime ended;
     SimpleDateFormat totalTime;
+
+    public Stop(String location, String comment, LocalDateTime started, LocalDateTime ended, SimpleDateFormat totalTime) {
+        this.location = location;
+        this.comment = comment;
+        this.started = started;
+        this.ended = ended;
+        this.totalTime = totalTime;
+    }
+
 }
