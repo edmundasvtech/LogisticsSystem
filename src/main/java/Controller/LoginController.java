@@ -5,13 +5,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
+    @FXML
     public PasswordField  passField;;
+    @FXML
     public TextField emailField;
     @FXML
     private Label welcomeText;
 
     @FXML
     protected void validate() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+
+        welcomeText.setText(emailField.getText());
+        System.out.println(emailField.getText());
     }
 }

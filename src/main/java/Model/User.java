@@ -1,6 +1,6 @@
 package Model;
 
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class User implements Serializable {
     private int id;
     private String email;
@@ -19,17 +23,7 @@ public abstract class User implements Serializable {
     private LocalDate employmentDate;
     private ArrayList<Trip> completedTrips;
 
-    public User(int id, String email, String password, String name, String surname, String phoneNumber, LocalDate birthDate, LocalDate employmentDate,ArrayList<Trip> completedTrips) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.phoneNumber = phoneNumber;
-        this.birthDate = birthDate;
-        this.employmentDate = employmentDate;
-        this.completedTrips=completedTrips;
-    }
+
 }
 class Driver extends User{
     private Trip currentTrip;
