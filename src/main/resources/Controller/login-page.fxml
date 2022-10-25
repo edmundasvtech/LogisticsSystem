@@ -10,5 +10,5 @@
     <TextField fx:id="emailField" layoutX="24.0" layoutY="128.0" AnchorPane.bottomAnchor="147.0" />
     <Label layoutX="24.0" layoutY="164.0" prefHeight="17.0" prefWidth="67.0" text="Password:" />
     <PasswordField fx:id="passField" layoutX="25.0" layoutY="192.0" text="df" />
-    <Button layoutX="77.0" layoutY="240.0" onAction="#validate" prefWidth="46.0" text="Login" />
+    <Button fx:id="loginBtn" layoutX="77.0" layoutY="240.0" onAction="#login" prefWidth="46.0" text="Login" />
 </AnchorPane>

@@ -5,15 +5,14 @@
 <hibernate-configuration>
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost/logistics</property>
-    <property name="connection.driver_class"> com.mysql.cj.jdbc.Driver</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="connection.username">root</property>
     <property name="connection.password"/>
+
+    <mapping resource="manager.hbm.xml"/>
     <mapping resource="driver.hbm.xml"/>
+    <mapping class="Model.Reply"/>
+    <mapping class="Model.LogisticsSystem"/>
 
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
-
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

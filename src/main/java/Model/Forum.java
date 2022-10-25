@@ -43,20 +43,8 @@ class Thread{
         this.title = title;
         this.text = text;
     }
-    public void addReply(String text, String author, SimpleDateFormat date){
+    public void addReply(String text, String author, LocalDate date){
         Reply reply=new Reply(text, author, date);
         this.replies.add(reply);
-    }
-}
-class Reply{
-    private String ID;
-    private String author;
-    private String text;
-    private SimpleDateFormat dateCreated;
-
-    public Reply(String text, String author, SimpleDateFormat date) {
-        this.text = text;
-        this.author = author;
-        this.dateCreated = date;
     }
 }

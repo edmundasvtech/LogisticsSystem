@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.kordamp.ikonli.javafx.StackedFontIcon?>
+
+<AnchorPane prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+   <children>
+      <AnchorPane layoutX="212.0" prefHeight="430.0" prefWidth="486.0">
+         <effect>
+            <DropShadow />
+         </effect></AnchorPane>
+      <AnchorPane prefHeight="434.0" prefWidth="211.0" style="-fx-background-color: #F0F7FF;">
+         <children>
+            <JFXButton layoutY="112.0" prefHeight="34.0" prefWidth="223.0" text="Dashboard" />
+            <StackedFontIcon />
+            <AnchorPane prefHeight="434.0" prefWidth="47.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+            <JFXButton layoutY="146.0" prefHeight="34.0" prefWidth="223.0" text="Trips" />
+            <JFXButton layoutY="180.0" prefHeight="34.0" prefWidth="223.0" text="Orders" />
+            <JFXButton layoutY="214.0" prefHeight="34.0" prefWidth="223.0" text="Drivers" />
+            <JFXButton layoutY="248.0" prefHeight="34.0" prefWidth="223.0" text="My Profile" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>

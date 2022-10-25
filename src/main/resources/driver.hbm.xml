@@ -12,9 +12,9 @@
         <property name="password" column="password" type="string"/>
         <property name="name" column="name" type="string"/>
         <property name="surname" column="surname" type="string"/>
-        <property name="phoneNumber" column="phoneNumber" type="int"/>
-        <property name="birthDate" column="birthDate" type="date"/>
-        <property name="employmentDate" column="employmentDate" type="date"/>
-        <property name="completedTrips" column="completedTrips" type="int"/>
+        <property name="phoneNumber" column="phoneNumber" type="string"/>
+        <property name="employmentDate" column="employmentDate" type="string"/>
+        <property name="birthDate" column="birthDate" type="string"/>
+        <property name="completedTrips" column="completedTrips" type="string"/>
     </class>
 </hibernate-mapping>
