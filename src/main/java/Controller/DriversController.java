@@ -1,17 +1,16 @@
 package Controller;
 
+import Model.Driver;
+import Services.ViewService;
 import Utilities.LogisticsSystemUtility;
 import Model.Reply;
 import Utilities.MessageUtility;
-import Services.ViewService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javax.persistence.EntityManagerFactory;
@@ -21,17 +20,27 @@ import java.util.Date;
 import java.util.List;
 import java.time.LocalDate;
 import  com.jfoenix.controls.JFXButton;
+import Utilities.DriverUtility;
 import org.kordamp.ikonli.javafx.StackedFontIcon;
 
-public class HomeController implements Controller {
+
+
+
+public class DriversController implements Controller {
+
+    private String text;
     @FXML
-    private Label userName;
+    private Label companyTextField;
+
     @FXML
     private DatePicker datePicker;
     @FXML
     private TextField versionTextField;
+
     @FXML
     private PieChart pieChart;
+    @FXML
+    private ListView driverList;
     @FXML
     private TableView latestMessagesTable;
     @FXML
@@ -55,32 +64,26 @@ public class HomeController implements Controller {
 
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("LogisticsSystem");
     LogisticsSystemUtility logisticsSystemUtility = new LogisticsSystemUtility(entityManagerFactory);
-    MessageUtility messageUtility = new MessageUtility(entityManagerFactory);
+    DriverUtility driverUtil = new DriverUtility(entityManagerFactory);
+
 
     public void loadSystemInfo(){
-    populateLatestMessagesTable();
-      ;}
-    public void setUsername(String text){
-        this.userName.setText(" "+text+"!");
-    }
-    public void populateLatestMessagesTable() {
-
-        latestMessagesTable.getItems().clear();
-            final ObservableList<Reply> data = FXCollections.observableArrayList();
-            authorCol.setCellValueFactory(new PropertyValueFactory("author"));
-            textCol.setCellValueFactory(new PropertyValueFactory("text"));
-           dateCreatedCol.setCellValueFactory(new PropertyValueFactory("dateCreated"));
-            messageUtility.getAllReplies().forEach(reply -> data.add(reply));
-            latestMessagesTable.setItems(data);
-
-    }
-
+        loadDrivers();
+        ;}
     @FXML
-    public void loadLatestMessages() {}
+    public void loadDrivers() {
+        driverList.getItems().clear();
+
+        for (Driver driver : driverUtil.getAllDrivers()) {
+            driverList.getItems().add(driver);
+        }
+        updateWindow();
+    }
     @FXML
     public void openMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("home-page.fxml"));
         Parent root = loader.load();
+
         HomeController homeController = loader.getController();
         ViewService.openView((Stage) homeBtn.getScene().getWindow(), root);
         homeController.loadSystemInfo();
@@ -89,10 +92,11 @@ public class HomeController implements Controller {
     public void openTrips() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("trips-page.fxml"));
         Parent root = loader.load();
+
         TripsController tripsController = loader.getController();
+
         ViewService.openView((Stage) tripsBtn.getScene().getWindow(), root);
         tripsController.loadSystemInfo();
-
 
     }
     @FXML
@@ -109,7 +113,9 @@ public class HomeController implements Controller {
     public void openMyProfile() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("myprofile-page.fxml"));
         Parent root = loader.load();
+
         MyProfileController myProfileController = loader.getController();
+
         ViewService.openView((Stage) myprofileBtn.getScene().getWindow(), root);
         myProfileController.loadSystemInfo();
     }
@@ -117,7 +123,9 @@ public class HomeController implements Controller {
     public void openDrivers() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("driversmanager-page.fxml"));
         Parent root = loader.load();
+
         DriversController driversController = loader.getController();
+
         ViewService.openView((Stage) driversBtn.getScene().getWindow(), root);
         driversController.loadSystemInfo();
     }
@@ -125,12 +133,23 @@ public class HomeController implements Controller {
     public void openForum() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("forum-page.fxml"));
         Parent root = loader.load();
+
         ForumController forumController= loader.getController();
+
         ViewService.openView((Stage) forumBtn.getScene().getWindow(), root);
         forumController.loadSystemInfo();
     }
+
+    public void setUserName(String text){
+        this.text=text;
+    }
+    public String returnUsername(){
+        return this.text;
+    }
+
     @Override
     public void updateWindow() {
         loadSystemInfo();
     }
+
 }

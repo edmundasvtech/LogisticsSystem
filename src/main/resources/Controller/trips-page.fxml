@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TripsController" >
+   <children>
+      <AnchorPane layoutX="181.0" prefHeight="430.0" prefWidth="606.0">
+         <effect>
+            <DropShadow />
+         </effect></AnchorPane>
+      <AnchorPane prefHeight="434.0" prefWidth="171.0" style="-fx-background-color: #F0F7FF;">
+         <children>
+            <JFXButton fx:id="homeBtn" onAction="#openMainMenu" layoutX="47.0" layoutY="112.0" prefHeight="34.0" prefWidth="132.0" text="Dashboard" />
+            <AnchorPane prefHeight="434.0" prefWidth="47.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+            <JFXButton fx:id="tripsBtn" onAction="#openTrips" layoutX="47.0" layoutY="146.0" prefHeight="34.0" prefWidth="132.0" text="Trips" />
+            <JFXButton fx:id="ordersBtn" onAction="#openOrders" layoutX="47.0" layoutY="180.0" prefHeight="34.0" prefWidth="132.0" text="Orders" />
+            <JFXButton fx:id="driversBtn" onAction="#openDrivers" layoutX="47.0" layoutY="214.0" prefHeight="34.0" prefWidth="132.0" text="Drivers" />
+            <JFXButton fx:id="myprofileBtn" onAction="#openMyProfile" layoutX="47.0" layoutY="248.0" prefHeight="34.0" prefWidth="132.0" text="My Profile" />
+            <JFXButton fx:id="forumBtn" onAction="#openForum" layoutX="47.0" layoutY="286.0" prefHeight="34.0" prefWidth="132.0" text="Discussion" />
+            <Separator layoutX="48.0" layoutY="92.0" prefHeight="34.0" prefWidth="132.0" />
+            <Separator layoutX="47.0" layoutY="315.0" prefHeight="34.0" prefWidth="132.0" />
+            <Label layoutX="60.0" layoutY="61.0" prefHeight="34.0" prefWidth="54.0" text="Welcome" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <Label layoutX="60.0" layoutY="61.0" prefHeight="34.0" prefWidth="54.0" text="Welcome" />
+      <Label fx:id="companyTextField" layoutX="109.0" layoutY="61.0" prefHeight="34.0" prefWidth="70.0" />
+   </children>
+</AnchorPane>

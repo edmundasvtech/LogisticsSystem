@@ -47,16 +47,16 @@ public class LoginController {
     }
 
     private void openMainMenu () throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Controller/home-page.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("home-page.fxml"));
         Parent root = loader.load();
         HomeController homeController = loader.getController();
         homeController.loadSystemInfo();
-
+        homeController.setUsername(emailField.getText());
         ViewService.openView((Stage) loginBtn.getScene().getWindow(), root);
 
     }
     private void openDriverMenu () throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Controller/driver-page.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("driver-page.fxml"));
         Parent root = loader.load();
         DriverPageController driverPageController= loader.getController();
         driverPageController.loadSystemInfo();

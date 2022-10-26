@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DriversController">
+    <children>
+        <AnchorPane layoutX="166.0" layoutY="2.0" prefHeight="430.0" prefWidth="607.0">
+         <children>
+              <GridPane layoutX="281.0" layoutY="31.0" prefHeight="220.0" prefWidth="296.0">
+                  <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="10.0" prefWidth="133.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="0.0" prefWidth="208.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                      <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="63.0" minHeight="9.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="86.0" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <children>
+                      <Label text="Email">
+
+                      </Label>
+                      <Label text="Password" GridPane.rowIndex="1">
+
+                      </Label>
+                      <Label text="Name" GridPane.rowIndex="2">
+
+                      </Label>
+                      <Label text="Surname" GridPane.rowIndex="3">
+
+                      </Label>
+                      <Label text="Phone number" GridPane.rowIndex="4">
+
+                      </Label>
+                      <TextField fx:id="emailField" GridPane.columnIndex="1" />
+                      <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                      <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                      <TextField fx:id="surnameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                      <TextField fx:id="phoneNumberField" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  </children>
+              </GridPane>
+             <Button fx:id="updatePersonBtn" layoutX="470.0" layoutY="283.0" mnemonicParsing="false" onAction="#updateDriver" text="Update person">
+             </Button>
+             <Button fx:id="resetPersonBtn" layoutX="343.0" layoutY="283.0" mnemonicParsing="false" onAction="#loadDriver" text="Reset person">
+
+             </Button>
+             <ButtonBar layoutX="199.0" layoutY="359.0" prefHeight="34.0" prefWidth="209.0">
+                 <buttons>
+                     <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#openMenu" prefHeight="44.0" prefWidth="242.0" text="Menu">
+
+                     </Button>
+                     <Button fx:id="usersBtn" minWidth="16.0" mnemonicParsing="false" onAction="#openDrivers" prefHeight="44.0" prefWidth="242.0" text="Users">
+
+                     </Button>
+                 </buttons>
+             </ButtonBar>
+             <ListView fx:id="driverList" editable="true" layoutX="35.0" layoutY="54.0" onMouseClicked="#loadDriver" prefHeight="200.0" prefWidth="219.0" />
+             <Label layoutX="35.0" layoutY="27.0" text="People">
+
+             </Label>
+             <Button fx:id="addDriverBtn" layoutX="35.0" layoutY="268.0" mnemonicParsing="false" onAction="#addDriver" text="Add person">
+
+             </Button>
+             <Button fx:id="removeDriveBtn" layoutX="135.0" layoutY="268.0" mnemonicParsing="false" onAction="#removeDriver" text="Remove person">
+
+             </Button>
+         </children>
+      </AnchorPane>
+        <AnchorPane prefHeight="434.0" prefWidth="171.0" style="-fx-background-color: #F0F7FF;">
+            <children>
+                <JFXButton fx:id="homeBtn" layoutX="47.0" layoutY="112.0" onAction="#openMainMenu" prefHeight="34.0" prefWidth="132.0" text="Dashboard" />
+                <AnchorPane prefHeight="434.0" prefWidth="47.0" style="-fx-background-color: #fff;">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </AnchorPane>
+                <JFXButton fx:id="tripsBtn" layoutX="47.0" layoutY="146.0" onAction="#openTrips" prefHeight="34.0" prefWidth="132.0" text="Trips" />
+                <JFXButton fx:id="ordersBtn" layoutX="47.0" layoutY="180.0" onAction="#openOrders" prefHeight="34.0" prefWidth="132.0" text="Orders" />
+                <JFXButton fx:id="driversBtn" layoutX="47.0" layoutY="214.0" onAction="#openDrivers" prefHeight="34.0" prefWidth="132.0" text="Drivers" />
+                <JFXButton fx:id="myprofileBtn" layoutX="47.0" layoutY="248.0" onAction="#openMyProfile" prefHeight="34.0" prefWidth="132.0" text="My Profile" />
+                <JFXButton fx:id="forumBtn" layoutX="47.0" layoutY="286.0" onAction="#openForum" prefHeight="34.0" prefWidth="132.0" text="Discussion" />
+                <Separator layoutX="48.0" layoutY="92.0" prefHeight="34.0" prefWidth="132.0" />
+                <Separator layoutX="47.0" layoutY="315.0" prefHeight="34.0" prefWidth="132.0" />
+                <Label layoutX="60.0" layoutY="61.0" prefHeight="34.0" prefWidth="54.0" text="Welcome" />
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+        </AnchorPane>
+        <Label layoutX="60.0" layoutY="61.0" prefHeight="34.0" prefWidth="54.0" text="Welcome" />
+        <Label fx:id="companyTextField" layoutX="109.0" layoutY="61.0" prefHeight="34.0" prefWidth="70.0" />
+    </children>
+</AnchorPane>
