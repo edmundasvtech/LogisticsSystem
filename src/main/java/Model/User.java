@@ -19,16 +19,15 @@ import java.util.Date;
 public abstract class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String email;
-    private String password;
-    private String name;
-    private String surname;
-    private String phoneNumber;
-    private String employmentDate;
-    private String birthDate;
-    private String completedTrips;
-    public User(String email, String password, String name, String surname, String phoneNumber, String employmentDate, String birthDate, String completedTrips) {
+    protected int id;
+    protected String email;
+    protected String password;
+    protected String name;
+    protected String surname;
+    protected String phoneNumber;
+    protected String employmentDate;
+    protected String birthDate;
+    public User(String email, String password, String name, String surname, String phoneNumber, String employmentDate, String birthDate) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -36,7 +35,6 @@ public abstract class User implements Serializable {
         this.phoneNumber=phoneNumber;
         this.employmentDate=employmentDate;
         this.birthDate=birthDate;
-        this.completedTrips=completedTrips;
     }
 
 

@@ -30,7 +30,22 @@ public class DriverUtility {
         }
         return null;
     }
+    public void create(Driver driver) {
+        EntityManager entityManager = null;
 
+        try {
+            entityManager = getEntityManager();
+            entityManager.getTransaction().begin();
+            entityManager.persist(entityManager.merge(driver));
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
     public List<Driver> getAllDrivers() {
         EntityManager entityManager = getEntityManager();
 
@@ -44,4 +59,42 @@ public class DriverUtility {
             entityManager.close();
         }
     }
+
+    public void edit(Driver driver) {
+        EntityManager entityManager = null;
+
+        try {
+            entityManager = getEntityManager();
+            entityManager.getTransaction().begin();
+            entityManager.flush();
+            entityManager.merge(driver);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    public void destroy(String email) throws Exception {
+        EntityManager entityManager = null;
+
+        try {
+            for (Driver driver : getAllDrivers()) {
+                if (driver.getEmail().equals(email)) {
+                    entityManager = getEntityManager();
+                    entityManager.getTransaction().begin();
+                    entityManager.remove(entityManager.merge(driver));
+                    entityManager.getTransaction().commit();
+                }
+            }
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
 }

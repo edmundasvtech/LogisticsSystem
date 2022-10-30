@@ -17,8 +17,8 @@ public class Manager extends User implements Serializable {
 //    private ArrayList<Driver> myDrivers;
     //  private ArrayList<Trip> currentTrips;
 
-    public Manager(String email, String password, String name, String surname, String phoneNumber, String employmentDate, String birthDate, String completedTrips) {
-        super(email, password, name, surname, phoneNumber,  employmentDate, birthDate, completedTrips);
+    public Manager(String email, String password, String name, String surname, String phoneNumber, String employmentDate, String birthDate) {
+        super(email, password, name, surname, phoneNumber,  employmentDate, birthDate);
 
     }
 

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class DriverPageController {
+public class DriverPageController implements Controller {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("LogisticsSystem");
 
 
@@ -22,8 +22,6 @@ public class DriverPageController {
 
             System.out.println("x");
     }
-
-
 
     public void updateWindow() {
         Stage stage = (Stage) latestMessages.getScene().getWindow();

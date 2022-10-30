@@ -58,22 +58,18 @@ public class HomeController implements Controller {
     MessageUtility messageUtility = new MessageUtility(entityManagerFactory);
 
     public void loadSystemInfo(){
-    populateLatestMessagesTable();
-      ;}
+    populateLatestMessagesTable();}
     public void setUsername(String text){
         this.userName.setText(" "+text+"!");
     }
     public void populateLatestMessagesTable() {
-
         latestMessagesTable.getItems().clear();
-            final ObservableList<Reply> data = FXCollections.observableArrayList();
-            authorCol.setCellValueFactory(new PropertyValueFactory("author"));
-            textCol.setCellValueFactory(new PropertyValueFactory("text"));
-           dateCreatedCol.setCellValueFactory(new PropertyValueFactory("dateCreated"));
-            messageUtility.getAllReplies().forEach(reply -> data.add(reply));
-            latestMessagesTable.setItems(data);
-
-    }
+        final ObservableList<Reply> data = FXCollections.observableArrayList();
+        authorCol.setCellValueFactory(new PropertyValueFactory("author"));
+        textCol.setCellValueFactory(new PropertyValueFactory("text"));
+        dateCreatedCol.setCellValueFactory(new PropertyValueFactory("dateCreated"));
+        messageUtility.getAllReplies().forEach(reply -> data.add(reply));
+        latestMessagesTable.setItems(data);}
 
     @FXML
     public void loadLatestMessages() {}

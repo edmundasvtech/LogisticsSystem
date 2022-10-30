@@ -15,7 +15,7 @@ public class TestHibernate {
 
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("LogisticsSystem");
-        Manager manager = new Manager("3", "3", "3", "3", "3", "3","3","3");
+        Manager manager = new Manager("3", "3", "3", "3", "3", "3","3");
         ManagerUtility managerUtility=new ManagerUtility(entityManagerFactory);
         managerUtility.create(manager);
 

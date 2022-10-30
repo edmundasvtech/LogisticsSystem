@@ -4,51 +4,39 @@ import Model.Driver;
 import Services.ViewService;
 import Utilities.LogisticsSystemUtility;
 import Model.Reply;
-import Utilities.MessageUtility;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 import java.time.LocalDate;
 import  com.jfoenix.controls.JFXButton;
 import Utilities.DriverUtility;
-import org.kordamp.ikonli.javafx.StackedFontIcon;
-
 
 
 
 public class DriversController implements Controller {
 
     private String text;
-    @FXML
-    private Label companyTextField;
 
     @FXML
-    private DatePicker datePicker;
+    private TableView<Driver> driverList;
     @FXML
-    private TextField versionTextField;
-
+    private TableColumn<Driver, String> nameCol;
     @FXML
-    private PieChart pieChart;
+    private TableColumn<Driver, String> lastNameCol;
     @FXML
-    private ListView driverList;
-    @FXML
-    private TableView latestMessagesTable;
-    @FXML
-    private TableColumn<Reply, String> authorCol;
-    @FXML
-    private TableColumn<Reply, String> textCol;
-    @FXML
-    private TableColumn<Reply, LocalDate> dateCreatedCol;
+    private TableColumn<Driver, String> emailCol;
     @FXML
     private JFXButton homeBtn;
     @FXML
@@ -61,6 +49,25 @@ public class DriversController implements Controller {
     private JFXButton tripsBtn;
     @FXML
     private JFXButton ordersBtn;
+    @FXML
+    private Button saveDriverBtn;
+    @FXML
+    private Button cancelBtn;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField passwordField;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField surnameField;
+    @FXML
+    private TextField phoneNumberField;
+    @FXML
+    private Button addDriverBtn;
+    @FXML
+    private Button removeDriverBtn;
+
 
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("LogisticsSystem");
     LogisticsSystemUtility logisticsSystemUtility = new LogisticsSystemUtility(entityManagerFactory);
@@ -70,15 +77,77 @@ public class DriversController implements Controller {
     public void loadSystemInfo(){
         loadDrivers();
         ;}
+
+    @FXML
+
+    public void editDriver() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("driveredit-page.fxml"));
+        Parent root = loader.load();
+        DriverEditorController driverEditorController = loader.getController();
+        driverEditorController.setDriversController(this);
+        ViewService.newWindow(root, "Add person");
+        Driver driver = (Driver) driverList.getSelectionModel().getSelectedItem();
+        driverEditorController.setEmailField(driver.getEmail());
+        driverEditorController.setPasswordField(driver.getPassword());
+        driverEditorController.setNameField(driver.getName());
+        driverEditorController.setSurnameField(driver.getSurname());
+        driverEditorController.setPhoneNumberField(driver.getPhoneNumber());
+        driverEditorController.setDriver(driver);
+        updateWindow();
+    }
+    @FXML
+    public void addDriver() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("driveredit-page.fxml"));
+        Parent root = loader.load();
+        DriverEditorController driverEditorController = loader.getController();
+        driverEditorController.setDriversController(this);
+        ViewService.newWindow(root, "Add person");
+    }
     @FXML
     public void loadDrivers() {
         driverList.getItems().clear();
-
-        for (Driver driver : driverUtil.getAllDrivers()) {
-            driverList.getItems().add(driver);
-        }
+        final ObservableList<Driver> data = FXCollections.observableArrayList();
+        nameCol.setCellValueFactory(new PropertyValueFactory("Name"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory("Surname"));
+        emailCol.setCellValueFactory(new PropertyValueFactory("Email"));
+        driverUtil.getAllDrivers().forEach(reply -> data.add(reply));
+        driverList.setItems(data);
         updateWindow();
     }
+
+
+
+
+    @FXML
+    public void removeDriver() throws Exception {
+        if (driverList.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Wrong username or password!");
+            alert.showAndWait();
+            return;
+        }
+        Driver driver = (Driver) driverList.getSelectionModel().getSelectedItem();
+        driverUtil.destroy(String.valueOf(driver));
+        loadDrivers();
+    }
+
+    @FXML
+    public void updateDriver() {
+        if (driverList.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Wrong username or password!");
+            alert.showAndWait();
+            return;
+        }
+        Driver driver = (Driver) driverList.getSelectionModel().getSelectedItem();
+        driver.setEmail(emailField.getText());
+        driver.setPassword(passwordField.getText());
+        driver.setName(nameField.getText());
+        driver.setSurname(surnameField.getText());
+        driver.setPhoneNumber(phoneNumberField.getText());
+        driverUtil.edit(driver);
+    }
+
     @FXML
     public void openMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("home-page.fxml"));
@@ -149,7 +218,8 @@ public class DriversController implements Controller {
 
     @Override
     public void updateWindow() {
-        loadSystemInfo();
+        Stage stage = (Stage) driverList.getScene().getWindow();
+        stage.show();
     }
 
 }

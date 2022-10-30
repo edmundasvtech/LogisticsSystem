@@ -15,6 +15,5 @@
         <property name="phoneNumber" column="phoneNumber" type="string"/>
         <property name="employmentDate" column="employmentDate" type="string"/>
         <property name="birthDate" column="birthDate" type="string"/>
-        <property name="completedTrips" column="completedTrips" type="string"/>
     </class>
 </hibernate-mapping>
